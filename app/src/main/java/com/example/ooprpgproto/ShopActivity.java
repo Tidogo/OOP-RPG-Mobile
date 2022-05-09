@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -164,6 +165,51 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
         Button buyBtn = (Button) findViewById(R.id.btnBuy);
         Button sellBtn = (Button) findViewById(R.id.btnSell);
         Button leaveBtn = (Button) findViewById(R.id.btnLeave);
+        EditText itemDetails = (EditText) findViewById(R.id.editTextItem);
+        diffShop.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String name = diffShop.getSelectedItem().toString();
+                String details = "";
+                for (Armor ar : armor) {
+                    if (name == ar.getName()) {
+                        details =
+                                "Defense: " + ar.getDefense() + " | " +
+                                "Cost: " + ar.getValue() + " | " +
+                                "Dodge: " + ar.getDodgeMod();
+                    }
+
+                }
+                for (Weapon wep : weapon) {
+                    if (name == wep.getName()) {
+                        details =
+                                "Attack Power: " + wep.getAttkPower() + " | " +
+                                "Cost: " + wep.getValue() + " | " +
+                                "Crit Chance: " + wep.getCritChance() + " | "
+                                + "Crit Multiplier: " + wep.getCritDmgMod();
+                    }
+                }
+                for (Consumable cons : consumable) {
+                    if (name == cons.getName()) {
+                        details =
+                                "Cost: " + cons.getValue() + " | " +
+                                "Health Boost: " + cons.getHealthBoost() + " | "
+                                + "Crit Boost: " + cons.getTempCritBoost() + " | "
+                                + "Attack Boost: " + cons.getTempAttackBoost() + " | "
+                                + "Dodge Boost: " + cons.getTempDodgeBoost() + " | "
+                                + "Defense Boost: " + cons.getTempDefenseBoost() + " | "
+                                + "Initiative Boost: " + cons.getTempInitBoost() + " | ";
+                    }
+                }
+                itemDetails.setText(details);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -240,35 +286,54 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
         inventory.setAdapter(arrayAdapter2);
     }
     public void sell(Player p, Spinner shop, Spinner inventory) {
-        String selectedItemInven = inventory.getSelectedItem().toString();
-        for (Armor ar : armor) {
-            if (selectedItemInven == ar.getName()) {
-                p.Inventory.remove(ar);
-                int sellMoney = ar.getValue();
-                int prevPlayerCash = p.getCash();
-                p.setCash(prevPlayerCash + sellMoney);
-            }
+        if (p.Inventory.isEmpty() || inventory.getCount() == 0) {
+            AlertDialog alertDialog = new AlertDialog.Builder(ShopActivity.this).create();
+            alertDialog.setTitle("Inventory Empty!");
+            alertDialog.setMessage("You don't have anything to sell!");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+
         }
-        for (Weapon we : weapon) {
-            if (selectedItemInven == we.getName()) {
-                p.Inventory.remove(we);
-                int sellMoney = we.getValue();
-                int prevPlayerCash = p.getCash();
-                p.setCash(prevPlayerCash + sellMoney);
+        else {
+            String selectedItemInven = inventory.getSelectedItem().toString();
+            for (Armor ar : armor) {
+                if (selectedItemInven == ar.getName()) {
+                    p.Inventory.remove(ar);
+                    playerInventory.remove(ar.getName());
+                    int sellMoney = ar.getValue();
+                    int prevPlayerCash = p.getCash();
+                    p.setCash(prevPlayerCash + sellMoney);
+                }
             }
-        }
-        for (Consumable consume : consumable) {
-            if (selectedItemInven == consume.getName()) {
-                p.Inventory.remove(consume);
-                int sellMoney = consume.getValue();
-                int prevPlayerCash = p.getCash();
-                p.setCash(prevPlayerCash + sellMoney);
+            for (Weapon we : weapon) {
+                if (selectedItemInven == we.getName()) {
+                    p.Inventory.remove(we);
+                    playerInventory.remove(we.getName());
+                    int sellMoney = we.getValue();
+                    int prevPlayerCash = p.getCash();
+                    p.setCash(prevPlayerCash + sellMoney);
+                }
             }
+            for (Consumable consume : consumable) {
+                if (selectedItemInven == consume.getName()) {
+                    p.Inventory.remove(consume);
+                    playerInventory.remove(consume.getName());
+                    int sellMoney = consume.getValue();
+                    int prevPlayerCash = p.getCash();
+                    p.setCash(prevPlayerCash + sellMoney);
+                }
+            }
+            refreshUI(p);
+            ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, playerInventory);
+            arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            inventory.setAdapter(arrayAdapter2);
         }
-        refreshUI(p);
-        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, playerInventory);
-        arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        inventory.setAdapter(arrayAdapter2);
+
     }
 
     public boolean checkWallet(int value, int cash) {

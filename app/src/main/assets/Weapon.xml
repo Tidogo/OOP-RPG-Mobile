@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+
+<Weapons>
+  <Weapon>
+    <Name>Stick</Name>
+    <AttkPower>1</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>0</Initiative>
+    <CritChance>0</CritChance>
+    <CritDmgMod>1</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>1</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Knife</Name>
+    <AttkPower>2</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>0</CritChance>
+    <CritDmgMod>1</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>3</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Club</Name>
+    <AttkPower>2</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>1</CritChance>
+    <CritDmgMod>1</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>4</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Hammer</Name>
+    <AttkPower>3</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>1</CritChance>
+    <CritDmgMod>1</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>5</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Trophy</Name>
+    <AttkPower>2</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>2</CritChance>
+    <CritDmgMod>1</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>5</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Golf Club</Name>
+    <AttkPower>5</AttkPower>
+    <TwoHanded>TRUE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>2</CritChance>
+    <CritDmgMod>2</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>16</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Tire Iron</Name>
+    <AttkPower>5</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>4</CritChance>
+    <CritDmgMod>2</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>20</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Wood Bat</Name>
+    <AttkPower>8</AttkPower>
+    <TwoHanded>TRUE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>5</CritChance>
+    <CritDmgMod>2</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>28</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Metal Bat</Name>
+    <AttkPower>10</AttkPower>
+    <TwoHanded>TRUE</TwoHanded>
+    <Initiative>2</Initiative>
+    <CritChance>5</CritChance>
+    <CritDmgMod>2</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>34</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Shiv</Name>
+    <AttkPower>2</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>0</Initiative>
+    <CritChance>0</CritChance>
+    <CritDmgMod>1</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>2</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Large Clue</Name>
+    <AttkPower>12</AttkPower>
+    <TwoHanded>TRUE</TwoHanded>
+    <Initiative>2</Initiative>
+    <CritChance>4</CritChance>
+    <CritDmgMod>3</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>54</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Short Sword</Name>
+    <AttkPower>10</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>3</Initiative>
+    <CritChance>3</CritChance>
+    <CritDmgMod>2</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>32</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Long Sword</Name>
+    <AttkPower>13</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>3</Initiative>
+    <CritChance>3</CritChance>
+    <CritDmgMod>2</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>38</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Katana</Name>
+    <AttkPower>14</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>4</Initiative>
+    <CritChance>5</CritChance>
+    <CritDmgMod>3</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>69</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Fire Axe</Name>
+    <AttkPower>13</AttkPower>
+    <TwoHanded>TRUE</TwoHanded>
+    <Initiative>2</Initiative>
+    <CritChance>6</CritChance>
+    <CritDmgMod>3</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>63</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Battle Axe</Name>
+    <AttkPower>17</AttkPower>
+    <TwoHanded>TRUE</TwoHanded>
+    <Initiative>2</Initiative>
+    <CritChance>7</CritChance>
+    <CritDmgMod>4</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>104</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Chain Saw</Name>
+    <AttkPower>25</AttkPower>
+    <TwoHanded>TRUE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>10</CritChance>
+    <CritDmgMod>5</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>180</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Pen</Name>
+    <AttkPower>1</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>-1</CritChance>
+    <CritDmgMod>1</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>1</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Brick</Name>
+    <AttkPower>3</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>2</CritChance>
+    <CritDmgMod>1</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>6</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Iron Pipe</Name>
+    <AttkPower>4</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>1</Initiative>
+    <CritChance>3</CritChance>
+    <CritDmgMod>2</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>8</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Spear</Name>
+    <AttkPower>10</AttkPower>
+    <TwoHanded>TRUE</TwoHanded>
+    <Initiative>6</Initiative>
+    <CritChance>4</CritChance>
+    <CritDmgMod>2</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>40</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Pike</Name>
+    <AttkPower>14</AttkPower>
+    <TwoHanded>TRUE</TwoHanded>
+    <Initiative>4</Initiative>
+    <CritChance>6</CritChance>
+    <CritDmgMod>3</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>60</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Two Hand Sword</Name>
+    <AttkPower>18</AttkPower>
+    <TwoHanded>TRUE</TwoHanded>
+    <Initiative>2</Initiative>
+    <CritChance>10</CritChance>
+    <CritDmgMod>3</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>90</Value>
+  </Weapon>
+
+  <Weapon>
+    <Name>Light Saber</Name>
+    <AttkPower>25</AttkPower>
+    <TwoHanded>FALSE</TwoHanded>
+    <Initiative>10</Initiative>
+    <CritChance>15</CritChance>
+    <CritDmgMod>5</CritDmgMod>
+    <Equipable>TRUE</Equipable>
+    <Value>200</Value>
+  </Weapon>
+
+</Weapons>

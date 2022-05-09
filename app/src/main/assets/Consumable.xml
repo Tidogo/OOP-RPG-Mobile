@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Consumables>
+  <Consumable>
+    <Name>Heal Agent</Name>
+    <StackLimit>5</StackLimit>
+    <TempBoost>FALSE</TempBoost> 
+    <HealthBoost>30</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>0</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>15</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Synth Skin</Name>
+    <StackLimit>5</StackLimit>
+    <TempBoost>FALSE</TempBoost>
+    <HealthBoost>60</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>0</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>45</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>First Aid Bag</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>FALSE</TempBoost>
+    <HealthBoost>150</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>0</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>120</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Crit Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>5</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>5</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>35</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Major Crit Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>10</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>5</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>90</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Attack Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>10</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>5</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>30</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Major Attack Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>20</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>5</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>70</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Deadly Attack Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>40</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>1</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>60</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Dodge Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>5</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>5</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>30</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Major Dodge Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>10</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>5</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>50</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Super Dodge Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>25</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>1</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>60</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Defense Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>10</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>5</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>30</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Major Defense Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>20</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>5</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>50</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>True Defense Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>40</TempDefenseBoost>
+    <TempInitBoost>0</TempInitBoost>
+    <NumOfBattles>1</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>50</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Speed Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>5</TempInitBoost>
+    <NumOfBattles>5</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>40</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Major Speed Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>10</TempInitBoost>
+    <NumOfBattles>5</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>75</Value>
+  </Consumable>
+
+  <Consumable>
+    <Name>Lightning Speed Booster</Name>
+    <StackLimit>2</StackLimit>
+    <TempBoost>TRUE</TempBoost>
+    <HealthBoost>0</HealthBoost>
+    <TempCritBoost>0</TempCritBoost>
+    <TempAttackBoost>0</TempAttackBoost>
+    <TempDodgeBoost>0</TempDodgeBoost>
+    <TempDefenseBoost>0</TempDefenseBoost>
+    <TempInitBoost>20</TempInitBoost>
+    <NumOfBattles>1</NumOfBattles>
+    <Equipable>FALSE</Equipable>
+    <Value>60</Value>
+  </Consumable>
+
+</Consumables>

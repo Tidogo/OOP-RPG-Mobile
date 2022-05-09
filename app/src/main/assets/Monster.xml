@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Monsters>
+ 
+  <Monster>
+    <Name>Mouse</Name>
+    <Level>1</Level>
+    <Strength>2</Strength>
+    <Difficulty>1</Difficulty>
+    <Constitution>1</Constitution>
+    <Dexterity>3</Dexterity>
+    <AttkPower>5</AttkPower>
+    <Initiative>2</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Sentient Mold</Name>
+    <Level>1</Level>
+    <Strength>3</Strength>
+    <Difficulty>1</Difficulty>
+    <Constitution>2</Constitution>
+    <Dexterity>1</Dexterity>
+    <AttkPower>7</AttkPower>
+    <Initiative>1</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Squeaky Chair</Name>
+    <Level>2</Level>
+    <Strength>3</Strength>
+    <Difficulty>1</Difficulty>
+    <Constitution>2</Constitution>
+    <Dexterity>2</Dexterity>
+    <AttkPower>5</AttkPower>
+    <Initiative>1</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Rogue Printer</Name>
+    <Level>2</Level>
+    <Strength>3</Strength>
+    <Difficulty>1</Difficulty>
+    <Constitution>2</Constitution>
+    <Dexterity>2</Dexterity>
+    <AttkPower>6</AttkPower>
+    <Initiative>2</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Bare Wires</Name>
+    <Level>1</Level>
+    <Strength>2</Strength>
+    <Difficulty>1</Difficulty>
+    <Constitution>2</Constitution>
+    <Dexterity>2</Dexterity>
+    <AttkPower>4</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Kaspersky</Name>
+    <Level>3</Level>
+    <Strength>3</Strength>
+    <Difficulty>1</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>1</Dexterity>
+    <AttkPower>8</AttkPower>
+    <Initiative>2</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Paper Towel Dispenser</Name>
+    <Level>1</Level>
+    <Strength>1</Strength>
+    <Difficulty>1</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>1</Dexterity>
+    <AttkPower>8</AttkPower>
+    <Initiative>1</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Paper Towel Dispenser Alpha</Name>
+    <Level>4</Level>
+    <Strength>2</Strength>
+    <Difficulty>1</Difficulty>
+    <Constitution>5</Constitution>
+    <Dexterity>2</Dexterity>
+    <AttkPower>10</AttkPower>
+    <Initiative>1</Initiative>
+  </Monster>
+    <Monster>
+    <Name>Kaspersky Alpha</Name>
+    <Level>5</Level>
+    <Strength>4</Strength>
+    <Difficulty>1</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>2</Dexterity>
+    <AttkPower>10</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+  
+  <Monster>
+    <Name>Java Errors</Name>
+    <Level>6</Level>
+    <Strength>4</Strength>
+    <Difficulty>2</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>3</Dexterity>
+    <AttkPower>11</AttkPower>
+    <Initiative>2</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Graph Design Haters</Name>
+    <Level>7</Level>
+    <Strength>5</Strength>
+    <Difficulty>2</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>3</Dexterity>
+    <AttkPower>11</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Irate Professor</Name>
+    <Level>8</Level>
+    <Strength>5</Strength>
+    <Difficulty>2</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>4</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>4</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Bunny with big gnarley teeth</Name>
+    <Level>9</Level>
+    <Strength>5</Strength>
+    <Difficulty>2</Difficulty>
+    <Constitution>6</Constitution>
+    <Dexterity>3</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Dirty Mop</Name>
+    <Level>10</Level>
+    <Strength>5</Strength>
+    <Difficulty>2</Difficulty>
+    <Constitution>6</Constitution>
+    <Dexterity>4</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+  
+  <Monster>
+    <Name>Computer Virus</Name>
+    <Level>11</Level>
+    <Strength>4</Strength>
+    <Difficulty>3</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>6</Dexterity>
+    <AttkPower>10</AttkPower>
+    <Initiative>6</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Code Monkeys</Name>
+    <Level>12</Level>
+    <Strength>6</Strength>
+    <Difficulty>3</Difficulty>
+    <Constitution>7</Constitution>
+    <Dexterity>4</Dexterity>
+    <AttkPower>14</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Irradiated Rat</Name>
+    <Level>13</Level>
+    <Strength>9</Strength>
+    <Difficulty>3</Difficulty>
+    <Constitution>8</Constitution>
+    <Dexterity>1</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>4</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Mutant Turtle</Name>
+    <Level>14</Level>
+    <Strength>5</Strength>
+    <Difficulty>3</Difficulty>
+    <Constitution>11</Constitution>
+    <Dexterity>3</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+  <Monster>
+    <Name>A Teenage Mutant Turtle</Name>
+    <Level>15</Level>
+    <Strength>5</Strength>
+    <Difficulty>3</Difficulty>
+    <Constitution>11</Constitution>
+    <Dexterity>4</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+
+  <Monster>
+    <Name>Giant Snake</Name>
+    <Level>16</Level>
+    <Strength>9</Strength>
+    <Difficulty>4</Difficulty>
+    <Constitution>6</Constitution>
+    <Dexterity>6</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>7</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Mutated Sea Bass</Name>
+    <Level>17</Level>
+    <Strength>10</Strength>
+    <Difficulty>4</Difficulty>
+    <Constitution>6</Constitution>
+    <Dexterity>6</Dexterity>
+    <AttkPower>15</AttkPower>
+    <Initiative>4</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Cheese Hording Mice</Name>
+    <Level>18</Level>
+    <Strength>9</Strength>
+    <Difficulty>4</Difficulty>
+    <Constitution>8</Constitution>
+    <Dexterity>6</Dexterity>
+    <AttkPower>16</AttkPower>
+    <Initiative>6</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Fiery Server Rack</Name>
+    <Level>19</Level>
+    <Strength>10</Strength>
+    <Difficulty>4</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>10</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Alpha Big Bad Monster</Name>
+    <Level>20</Level>
+    <Strength>15</Strength>
+    <Difficulty>4</Difficulty>
+    <Constitution>6</Constitution>
+    <Dexterity>4</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+
+  <Monster>
+    <Name>Book Store Badgers</Name>
+    <Level>6</Level>
+    <Strength>4</Strength>
+    <Difficulty>2</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>3</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>2</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Netflix Subscription</Name>
+    <Level>7</Level>
+    <Strength>4</Strength>
+    <Difficulty>2</Difficulty>
+    <Constitution>5</Constitution>
+    <Dexterity>3</Dexterity>
+    <AttkPower>11</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Miffed Professor</Name>
+    <Level>8</Level>
+    <Strength>5</Strength>
+    <Difficulty>2</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>4</Dexterity>
+    <AttkPower>14</AttkPower>
+    <Initiative>4</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Goblin Goodies</Name>
+    <Level>9</Level>
+    <Strength>5</Strength>
+    <Difficulty>2</Difficulty>
+    <Constitution>6</Constitution>
+    <Dexterity>3</Dexterity>
+    <AttkPower>13</AttkPower>
+    <Initiative>4</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Dirty Mop Bucket</Name>
+    <Level>10</Level>
+    <Strength>5</Strength>
+    <Difficulty>2</Difficulty>
+    <Constitution>6</Constitution>
+    <Dexterity>4</Dexterity>
+    <AttkPower>15</AttkPower>
+    <Initiative>1</Initiative>
+  </Monster>
+  
+  <Monster>
+    <Name>Computer Virus Scanner</Name>
+    <Level>11</Level>
+    <Strength>4</Strength>
+    <Difficulty>3</Difficulty>
+    <Constitution>4</Constitution>
+    <Dexterity>6</Dexterity>
+    <AttkPower>15</AttkPower>
+    <Initiative>7</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Polygon</Name>
+    <Level>12</Level>
+    <Strength>6</Strength>
+    <Difficulty>3</Difficulty>
+    <Constitution>7</Constitution>
+    <Dexterity>4</Dexterity>
+    <AttkPower>14</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Irradiated Molerat</Name>
+    <Level>13</Level>
+    <Strength>9</Strength>
+    <Difficulty>3</Difficulty>
+    <Constitution>8</Constitution>
+    <Dexterity>1</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>4</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Rad Spider</Name>
+    <Level>14</Level>
+    <Strength>8</Strength>
+    <Difficulty>3</Difficulty>
+    <Constitution>8</Constitution>
+    <Dexterity>3</Dexterity>
+    <AttkPower>15</AttkPower>
+    <Initiative>4</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Ninja Hamster</Name>
+    <Level>15</Level>
+    <Strength>5</Strength>
+    <Difficulty>3</Difficulty>
+    <Constitution>17</Constitution>
+    <Dexterity>8</Dexterity>
+    <AttkPower>17</AttkPower>
+    <Initiative>1</Initiative>
+  </Monster>
+
+  <Monster>
+    <Name>Misty River</Name>
+    <Level>16</Level>
+    <Strength>9</Strength>
+    <Difficulty>4</Difficulty>
+    <Constitution>6</Constitution>
+    <Dexterity>6</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>7</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Where Worlds Collide</Name>
+    <Level>17</Level>
+    <Strength>10</Strength>
+    <Difficulty>4</Difficulty>
+    <Constitution>6</Constitution>
+    <Dexterity>6</Dexterity>
+    <AttkPower>15</AttkPower>
+    <Initiative>4</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Mutated Sea Bass With Lasers</Name>
+    <Level>18</Level>
+    <Strength>9</Strength>
+    <Difficulty>4</Difficulty>
+    <Constitution>8</Constitution>
+    <Dexterity>6</Dexterity>
+    <AttkPower>16</AttkPower>
+    <Initiative>6</Initiative>
+  </Monster>
+  <Monster>
+    <Name>English Speaking Snails</Name>
+    <Level>19</Level>
+    <Strength>11</Strength>
+    <Difficulty>4</Difficulty>
+    <Constitution>10</Constitution>
+    <Dexterity>3</Dexterity>
+    <AttkPower>117</AttkPower>
+    <Initiative>2</Initiative>
+  </Monster>
+  <Monster>
+    <Name>Alpha Big Bad Monster's Mate</Name>
+    <Level>20</Level>
+    <Strength>15</Strength>
+    <Difficulty>4</Difficulty>
+    <Constitution>6</Constitution>
+    <Dexterity>4</Dexterity>
+    <AttkPower>12</AttkPower>
+    <Initiative>3</Initiative>
+  </Monster>
+
+
+</Monsters>

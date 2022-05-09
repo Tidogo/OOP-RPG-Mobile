@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+
+<Armors>
+  <Armor>
+    <Name>Cap</Name>
+    <Defense>0</Defense>
+    <DodgeMod>4</DodgeMod>
+    <Slot>1</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>1</Value>
+  </Armor>
+
+  <Armor>
+    <Name>T-Shirt</Name>
+    <Defense>1</Defense>
+    <DodgeMod>4</DodgeMod>
+    <Slot>2</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>1</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Cloth Pants</Name>
+    <Defense>1</Defense>
+    <DodgeMod>4</DodgeMod>
+    <Slot>3</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>1</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Face Mask</Name>
+    <Defense>3</Defense>
+    <DodgeMod>3</DodgeMod>
+    <Slot>1</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>15</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Heavy Shirt</Name>
+    <Defense>3</Defense>
+    <DodgeMod>3</DodgeMod>
+    <Slot>2</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>15</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Jeans</Name>
+    <Defense>3</Defense>
+    <DodgeMod>3</DodgeMod>
+    <Slot>3</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>15</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Football Helmet</Name>
+    <Defense>6</Defense>
+    <DodgeMod>3</DodgeMod>
+    <Slot>1</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>30</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Football Pads</Name>
+    <Defense>10</Defense>
+    <DodgeMod>3</DodgeMod>
+    <Slot>2</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>30</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Shin Guards</Name>
+    <Defense>6</Defense>
+    <DodgeMod>3</DodgeMod>
+    <Slot>3</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>30</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Kevlar Helmet</Name>
+    <Defense>10</Defense>
+    <DodgeMod>7</DodgeMod>
+    <Slot>1</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>60</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Flak Vest</Name>
+    <Defense>15</Defense>
+    <DodgeMod>5</DodgeMod>
+    <Slot>2</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>50</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Kevlar Weave Pants</Name>
+    <Defense>10</Defense>
+    <DodgeMod>5</DodgeMod>
+    <Slot>3</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>75</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Interceptor Vest</Name>
+    <Defense>25</Defense>
+    <DodgeMod>6</DodgeMod>
+    <Slot>2</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>100</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Bullet Proof Vest</Name>
+    <Defense>20</Defense>
+    <DodgeMod>9</DodgeMod>
+    <Slot>2</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>75</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Chain Coif</Name>
+    <Defense>8</Defense>
+    <DodgeMod>8</DodgeMod>
+    <Slot>1</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>65</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Chain Mail Shirt</Name>
+    <Defense>25</Defense>
+    <DodgeMod>10</DodgeMod>
+    <Slot>2</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>120</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Chain Pants</Name>
+    <Defense>15</Defense>
+    <DodgeMod>8</DodgeMod>
+    <Slot>3</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>80</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Steel Helmet</Name>
+    <Defense>12</Defense>
+    <DodgeMod>15</DodgeMod>
+    <Slot>1</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>70</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Steel Chest Piece</Name>
+    <Defense>30</Defense>
+    <DodgeMod>10</DodgeMod>
+    <Slot>2</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>135</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Steel Grieves</Name>
+    <Defense>15</Defense>
+    <DodgeMod>10</DodgeMod>
+    <Slot>3</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>100</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Trash Can Lid</Name>
+    <Defense>4</Defense>
+    <DodgeMod>5</DodgeMod>
+    <Slot>4</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>10</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Round Shield</Name>
+    <Defense>10</Defense>
+    <DodgeMod>10</DodgeMod>
+    <Slot>4</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>70</Value>
+  </Armor>
+
+  <Armor>
+    <Name>Door Shield</Name>
+    <Defense>15</Defense>
+    <DodgeMod>15</DodgeMod>
+    <Slot>4</Slot>
+    <Equipable>TRUE</Equipable>
+    <Value>200</Value>
+  </Armor>
+  
+</Armors>

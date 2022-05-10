@@ -32,6 +32,8 @@ public class Player extends Entity implements Serializable {
 		ArrayList<Item> inven = new ArrayList<Item>();
 		setInventory(inven);
 		ArrayList<Item> equipped = new ArrayList<Item>();
+		ArrayList<Weapon> weapons = new ArrayList<Weapon>();
+		setWeapons(weapons);
 		setEquippedGear(equipped);
 		Calculate_SubStats();
 	}
@@ -56,6 +58,7 @@ public class Player extends Entity implements Serializable {
 		Experience = value;
 	}
 
+	private ArrayList<Weapon> Weapons;
 	public ArrayList<Item> Inventory;
 
 	public final ArrayList<Item> getInventory() {
@@ -189,5 +192,13 @@ public class Player extends Entity implements Serializable {
 		{
 
 		}
+	}
+
+	public ArrayList<Weapon> getWeapons() {
+		return Weapons;
+	}
+
+	public void setWeapons(ArrayList<Weapon> weapons) {
+		Weapons = weapons;
 	}
 }

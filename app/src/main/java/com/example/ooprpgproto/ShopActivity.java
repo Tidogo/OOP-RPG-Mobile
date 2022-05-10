@@ -111,7 +111,7 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
             e.printStackTrace();
         }
         try {
-            InputStream in3 = this.getAssets().open(file2);
+            InputStream in3 = this.getAssets().open(file3);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = null;
             dBuilder = dbFactory.newDocumentBuilder();
@@ -130,7 +130,7 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
                     int critchance = Integer.parseInt(getValue("CritChance", element2));
                     int critdmod = Integer.parseInt(getValue("CritDmgMod", element2));
                     boolean tb = Boolean.parseBoolean((getValue("Equipable", element2)));
-                    int value = Integer.parseInt(getValue("TempDodgeBoost", element2));
+                    int value = Integer.parseInt(getValue("Value", element2));
                     Weapon w = new Weapon(name, apwr, twohand, init, critchance, critdmod, value);
                     weapon.add(w);
                 }
@@ -250,6 +250,7 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
         for (Armor ar : armor) {
             if (selectedItem == ar.getName()) {
                 p.Inventory.add(ar);
+                playerInventory.add(ar.getName());
                 int sellMoney = ar.getValue();
                 int prevPlayerCash = p.getCash();
                 if (checkWallet(sellMoney, prevPlayerCash)) {
@@ -259,7 +260,10 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
         }
         for (Weapon we : weapon) {
             if (selectedItem == we.getName()) {
-                p.Inventory.add(we);
+                ArrayList<Weapon> wepn = new ArrayList<>();
+                wepn.add(we);
+                p.setWeapons(wepn);
+                playerInventory.add(we.getName());
                 int sellMoney = we.getValue();
                 int prevPlayerCash = p.getCash();
                 if (checkWallet(sellMoney, prevPlayerCash)) {
@@ -270,6 +274,7 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
         for (Consumable consume : consumable) {
             if (selectedItem == consume.getName()) {
                 p.Inventory.add(consume);
+                playerInventory.add(consume.getName());
                 int sellMoney = consume.getValue();
                 int prevPlayerCash = p.getCash();
                 if (checkWallet(sellMoney, prevPlayerCash)) {
@@ -278,9 +283,6 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
             }
         }
         refreshUI(p);
-        for (Item i : p.Inventory) {
-            playerInventory.add(i.getName());
-        }
         ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, playerInventory);
         arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         inventory.setAdapter(arrayAdapter2);

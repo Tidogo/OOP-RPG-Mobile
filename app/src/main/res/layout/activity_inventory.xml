@@ -6,4 +6,89 @@
     android:layout_height="match_parent"
     tools:context=".InventoryActivity">
 
+    <TableLayout
+        android:layout_width="301dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtHeadGear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Head Gear" />
+
+            <Spinner
+                android:id="@+id/spinHead"
+                android:layout_width="184dp"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtChest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chest Gear" />
+
+            <Spinner
+                android:id="@+id/spinChest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtLHandGear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weapon" />
+
+            <Spinner
+                android:id="@+id/spinLeftHand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Leg Gear" />
+
+            <Spinner
+                android:id="@+id/spinLeg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        android:layout_width="409dp"
+        android:layout_height="305dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="250dp">
+
+        <ListView
+            android:id="@+id/listInventory"
+            android:layout_width="292dp"
+            android:layout_height="306dp" />
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

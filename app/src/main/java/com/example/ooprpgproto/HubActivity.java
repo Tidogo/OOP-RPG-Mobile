@@ -105,6 +105,7 @@ public class HubActivity extends AppCompatActivity implements Serializable {
         diff.setAdapter(arrayAdapter);
         Button battleBtn = (Button) findViewById(R.id.btnFight);
         Button shopBtn = (Button) findViewById(R.id.btnItemShop);
+        Button invBtn = (Button) findViewById(R.id.btnInven);
         battleBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,8 +118,21 @@ public class HubActivity extends AppCompatActivity implements Serializable {
                 shop(thePlayer);
             }
         });
+        invBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                inventory(thePlayer);
+            }
+        });
 
     }
+
+    private void inventory(Player thePlayer) {
+        Intent intent = new Intent(this, InventoryActivity.class);
+        intent.putExtra("thePlayer", thePlayer);
+        startActivity(intent);
+    }
+
     public void shop(Player thePlayer) {
         Intent intent = new Intent(this, ShopActivity.class);
         intent.putExtra("thePlayer", thePlayer);

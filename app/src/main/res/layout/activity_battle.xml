@@ -47,6 +47,16 @@
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Spinner
+                android:id="@+id/spinConsumables"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <Button
@@ -68,7 +78,7 @@
                 android:layout_width="228dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="35dp"
-                android:text="ITEM"
+                android:text="USE ITEM"
                 android:textSize="24sp"
                 tools:text="btnItem" />
         </TableRow>

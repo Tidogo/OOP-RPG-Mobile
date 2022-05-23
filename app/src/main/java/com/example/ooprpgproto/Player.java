@@ -183,7 +183,16 @@ public class Player extends Entity implements Serializable {
 	{
 		for (Item i : EquippedGear)
 		{
-
+			String itemType = i.getClass().getSimpleName();
+			if (itemType.equals("Armor")) {
+				setGearDefenseTotal(((Armor) i).getDefense());
+				setGearDodgeTotal(((Armor) i).getDodgeMod());
+			}
+			else if (itemType.equals("Weapon")) {
+				setGearAttPowerMod(((Weapon)i).getAttkPower());
+				setGearCritMod(((Weapon) i).getCritChance());
+				setGearInitiativeMod(((Weapon) i).getInitiative());
+			}
 		}
 	}
 	public void Equip(Item i)

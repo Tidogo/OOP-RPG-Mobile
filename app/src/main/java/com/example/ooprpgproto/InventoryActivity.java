@@ -40,7 +40,7 @@ public class InventoryActivity extends AppCompatActivity implements Serializable
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
         Player thePlayer = (Player) getIntent().getSerializableExtra("thePlayer");
-        refreshInventory(thePlayer);
+        refreshUI(thePlayer);
         String file1 = "Armor.xml";
         String file3 = "Weapon.xml";
         try {

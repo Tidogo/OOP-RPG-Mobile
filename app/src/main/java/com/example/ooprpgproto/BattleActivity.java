@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -34,6 +35,7 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
 
     static Random rnd = new Random();
     ArrayList<Consumable> consumable = new ArrayList<Consumable>();
+    private ArrayList<String> playerInvenNames = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,7 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
         EditText etLog = (EditText) findViewById(R.id.textMultiLog);
         thePlayer.Calculate_Equip_Bonus();
         refreshUI(thePlayer, theMon);
+        refreshInvConsumables(thePlayer);
         etLog.setEnabled(false);
         String file2 = "Consumable.xml";
         try {
@@ -106,6 +109,22 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
 
     private void useItem(Player p) {
         Spinner spinItem = (Spinner) findViewById(R.id.spinConsumables);
+        String iName = spinItem.getSelectedItem().toString();
+        Consumable tempCon = null;
+        for (Item i : p.Inventory) {
+            if (iName.equals(i.getName())) {
+                tempCon = (Consumable) i;
+                p.setHealth(p.getHealth() + tempCon.getHealthBoost());
+                p.setGearInitiativeMod(p.getGearInitiativeMod() + tempCon.getTempInitBoost());
+                p.setGearDodgeTotal(p.getGearDodgeTotal() + tempCon.getTempDodgeBoost());
+                p.setGearCritMod(p.getGearCritMod() + tempCon.getTempCritBoost());
+                p.setGearAttPowerMod(p.getGearAttPowerMod() + tempCon.getTempAttackBoost());
+                p.setGearDefenseTotal(p.getGearDefenseTotal() + tempCon.getTempDefenseBoost());
+                p.Inventory.remove(i);
+                break;
+            }
+        }
+        refreshInvConsumables(p);
     }
 
     private void flee(Player thePlayer, Monster theMon, EditText etLog) {
@@ -132,6 +151,27 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
         txtPHP.setText("Player HP: "+ p.getHealth());
         TextView txtMHP = (TextView) findViewById(R.id.txtMonHP);
         txtMHP.setText("Monster HP: " + String.valueOf(m.getHealth()));
+    }
+    public void refreshUI(Player p) {
+        TextView txtPHP = (TextView) findViewById(R.id.txtPlayerHP);
+        txtPHP.setText("Player HP: "+ p.getHealth());
+    }
+    public void refreshInvConsumables(Player p) {
+        String className = "";
+        playerInvenNames.clear();
+        for (Item i : p.Inventory) {
+            className = i.getClass().getSimpleName();
+            if (className.equals("Consumable")) {
+                playerInvenNames.add(i.getName());
+            }
+        }
+        Spinner lv = (Spinner) findViewById(R.id.spinConsumables);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, playerInvenNames
+        );
+        lv.setAdapter(arrayAdapter);
+        refreshUI(p);
+
     }
     public void attack(Player p, Monster m, EditText log) {
         double monDmg = m.getAttPower();
@@ -268,6 +308,20 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
                 userDmg = p.getAttPower();
                 refreshUI(p, m);
             }
+        }
+        else
+        {
+            int monHP = m.getHealth();
+            m.setHealth(monHP -= Math.round((userDmg - (m.getDefense()) * 1.0)));
+            String aar = p.getName() + " hit " + m.getName() + " for " + userDmg + " DMG!" + "\n";
+            log.append(aar);
+            int hp = p.getHealth();
+            p.setHealth(hp -= Math.round((monDmg - (p.getDefense() * 1.0))));
+            aar = m.getName() + " hit " + p.getName() + " for " + monDmg + " DMG!" + "\n";
+            log.append(aar);
+            monDmg = m.getAttPower();
+            userDmg = p.getAttPower();
+            refreshUI(p, m);
         }
 
 

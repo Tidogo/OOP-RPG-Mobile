@@ -118,9 +118,17 @@ public class InventoryActivity extends AppCompatActivity implements Serializable
                 leave(thePlayer);
             }
         });
+        Button unequipButton = (Button) findViewById(R.id.btnUnequipAll);
+        unequipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                unequipAll(thePlayer);
+            }
+        });
     }
 
     public void refreshInventory(Player p) {
+        playerInvenNames.clear();
         for (Item i : p.Inventory) {
             playerInvenNames.add(i.getName());
         }
@@ -163,6 +171,7 @@ public class InventoryActivity extends AppCompatActivity implements Serializable
                     }
                     p.EquippedGear.add(wep);
                     p.Inventory.remove(i);
+                    playerInvenNames.remove(i.getName());
                     weapongear.setText(wep.getName());
                     break;
                 }
@@ -206,22 +215,60 @@ public class InventoryActivity extends AppCompatActivity implements Serializable
                     }
                     p.EquippedGear.add(armr);
                     p.Inventory.remove(i);
+                    playerInvenNames.remove(i.getName());
                     break;
                 }
                 break;
             }
         }
+        refreshUI(p);
     }
     public int wepOrArmor(Item i) {
         int result = 0;
+        String name = i.getClass().getSimpleName();
 
-        if (weapon.contains(i) == true) {
+        if (name.equals("Weapon")) {
             result = 1;
         }
-        else if (armor.contains(i) == true) {
+        else if (name.equals("Armor")) {
             result = 2;
         }
         return result;
+    }
+    public void refreshUI(Player p) {
+        TextView headgear = (TextView) findViewById(R.id.textView2);
+        TextView chestgear = (TextView) findViewById(R.id.textView4);
+        TextView weapongear = (TextView) findViewById(R.id.textView5);
+        TextView leggear = (TextView) findViewById(R.id.textView7);
+        leggear.setText("");
+        headgear.setText("");
+        weapongear.setText("");
+        chestgear.setText("");
+
+        for (Item i : p.EquippedGear) {
+            if (wepOrArmor(i) == 1) {
+                weapongear.setText(i.getName());
+            }
+            else {
+                if (((Armor) i).getSlot() == 1) {
+                    headgear.setText(i.getName());
+                }
+                else if (((Armor) i).getSlot() == 2) {
+                    chestgear.setText(i.getName());
+                }
+                else {
+                    leggear.setText(i.getName());
+                }
+            }
+        }
+        refreshInventory(p);
+    }
+    public void unequipAll(Player p) {
+        for (Item i : p.EquippedGear) {
+            p.Inventory.add(i);
+        }
+        p.EquippedGear.clear();
+        refreshUI(p);
     }
 
 }

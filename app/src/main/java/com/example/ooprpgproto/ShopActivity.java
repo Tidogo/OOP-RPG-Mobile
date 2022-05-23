@@ -64,7 +64,7 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
                     int dodgeMod = Integer.parseInt(getValue("DodgeMod", element2));
                     int slot = Integer.parseInt(getValue("Slot", element2));
                     int value = Integer.parseInt(getValue("Value", element2));
-                    Armor a = new Armor(name, defense, dodgeMod, slot, value);
+                    Armor a = new Armor(name, defense, slot, dodgeMod, value);
                     armor.add(a);
                 }
             }
@@ -216,18 +216,19 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
                 buy(thePlayer, diffShop, diffInventory);
             }
         });
-        sellBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sell(thePlayer, diffShop, diffInventory);
-            }
-            });
-            leaveBtn.setOnClickListener(new View.OnClickListener() {
+        leaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 leave(thePlayer);
             }
         });
+        sellBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sell(thePlayer, diffShop, diffInventory);
+            }
+        });
+
 
     }
 
@@ -260,9 +261,7 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
         }
         for (Weapon we : weapon) {
             if (selectedItem == we.getName()) {
-                ArrayList<Weapon> wepn = new ArrayList<>();
-                wepn.add(we);
-                p.setWeapons(wepn);
+                p.Inventory.add(we);
                 playerInventory.add(we.getName());
                 int sellMoney = we.getValue();
                 int prevPlayerCash = p.getCash();

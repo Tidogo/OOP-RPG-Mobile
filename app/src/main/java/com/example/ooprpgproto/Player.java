@@ -181,6 +181,13 @@ public class Player extends Entity implements Serializable {
 
 	public void Calculate_Equip_Bonus()
 	{
+		setGearDefenseTotal(0);
+		setGearInitiativeMod(0);
+		setGearAttPowerMod(0);
+		setGearCritMod(0);
+		setGearConstitutionMod(0);
+		setGearDexterityMod(0);
+		setGearDodgeTotal(0);
 		for (Item i : EquippedGear)
 		{
 			String itemType = i.getClass().getSimpleName();
@@ -201,6 +208,9 @@ public class Player extends Entity implements Serializable {
 		{
 
 		}
+	}
+	public void calcHealth() {
+		Health = 100 + (10 * Constitution) + 5;
 	}
 
 	public ArrayList<Weapon> getWeapons() {

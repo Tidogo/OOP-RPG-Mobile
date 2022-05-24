@@ -206,6 +206,7 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
                     int s = p.getStrength();
                     int d = p.getDexterity();
                     int c = p.getConstitution();
+                    int l = p.getLevel();
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setTitle("You Leveled Up! Choose a skill to allocate your point!");
                     builder.setItems(stats, new DialogInterface.OnClickListener() {
@@ -214,12 +215,15 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
                             switch (which) {
                                 case 0:
                                     p.setStrength(s+1);
+                                    p.setLevel(l+1);
                                     backToHub(p);
                                 case 1:
                                     p.setDexterity(d+1);
+                                    p.setLevel(l+1);
                                     backToHub(p);
                                 case 2:
                                     p.setConstitution(c+1);
+                                    p.setLevel(l+1);
                                     backToHub(p);
                             }
                         }
@@ -229,6 +233,25 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
+                else {
+                    String[] stats = {"Back to Hub"};
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("Enemy Vanquished!");
+                    builder.setItems(stats, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case 0:
+                                    backToHub(p);
+                            }
+                        }
+                    });
+
+                    // create and show the alert dialog
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+
             }
             else
             {
@@ -275,15 +298,25 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
                     int s = p.getStrength();
                     int d = p.getDexterity();
                     int c = p.getConstitution();
+                    int l = p.getLevel();
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setTitle("You Leveled Up! Choose a skill to allocate your point!");
                     builder.setItems(stats, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             switch (which) {
-                                case 0: p.setStrength(s+1);
-                                case 1: p.setDexterity(d+1);
-                                case 2: p.setConstitution(c+1);
+                                case 0:
+                                    p.setStrength(s+1);
+                                    p.setLevel(l+1);
+                                    backToHub(p);
+                                case 1:
+                                    p.setDexterity(d+1);
+                                    p.setLevel(l+1);
+                                    backToHub(p);
+                                case 2:
+                                    p.setConstitution(c+1);
+                                    p.setLevel(l+1);
+                                    backToHub(p);
                             }
                         }
                     });
@@ -292,17 +325,35 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
-                backToHub(p);
+                else {
+                    String[] stats = {"Back to Hub"};
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("Enemy Vanquished!");
+                    builder.setItems(stats, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case 0:
+                                    backToHub(p);
+                            }
+                        }
+                    });
+
+                    // create and show the alert dialog
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+
             }
             else
             {
                 int monHP = m.getHealth();
                 m.setHealth(monHP -= Math.round((userDmg - (m.getDefense()) * 1.0)));
-                String aar = p.getName() + " hit " + m.getName() + " for " + p.getAttPower() + " DMG!" + "\n";
+                String aar = p.getName() + " hit " + m.getName() + " for " + userDmg + " DMG!" + "\n";
                 log.append(aar);
                 int hp = p.getHealth();
                 p.setHealth(hp -= Math.round((monDmg - (p.getDefense() * 1.0))));
-                aar = m.getName() + " hit " + p.getName() + " for " + m.getAttPower() + " DMG!" + "\n";
+                aar = m.getName() + " hit " + p.getName() + " for " + monDmg + " DMG!" + "\n";
                 log.append(aar);
                 monDmg = m.getAttPower();
                 userDmg = p.getAttPower();
@@ -311,23 +362,101 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
         }
         else
         {
-            int monHP = m.getHealth();
-            m.setHealth(monHP -= Math.round((userDmg - (m.getDefense()) * 1.0)));
-            String aar = p.getName() + " hit " + m.getName() + " for " + userDmg + " DMG!" + "\n";
-            log.append(aar);
-            int hp = p.getHealth();
-            p.setHealth(hp -= Math.round((monDmg - (p.getDefense() * 1.0))));
-            aar = m.getName() + " hit " + p.getName() + " for " + monDmg + " DMG!" + "\n";
-            log.append(aar);
-            monDmg = m.getAttPower();
-            userDmg = p.getAttPower();
-            refreshUI(p, m);
+            if (monDmg >= p.Health)
+            {
+                p.setHealth(0);
+                String aar = m.getName()+ " inflicted a near-fatal blow on " + p.getName() + "!" + "\n";
+                log.append(aar);
+                p.setHealth(1);
+                p.setExperience(p.getExperience() - m.getExperienceValue());
+                log.append(p.getName() + " barely makes it away in one piece. Be more careful next time!" + "\n");
+                Intent intent = new Intent(this, HubActivity.class);
+                intent.putExtra("thePlayer", p);
+                startActivity(intent);
+            }
+            else if (userDmg >= m.getHealth())
+            {
+                String aar = p.getName() + " inflicted a fatal blow on " + m.getName() + "!" + "\n";
+                log.append(aar);
+                p.setExperience(p.getExperience() + m.getExperienceValue());
+                p.setCash(m.getRndCashLoot() + p.getCash());
+                p.setHealth(100 + (10 * p.getConstitution()) + 5);
+                log.append(p.getName() + " vanquished the " + m.getName() + "! You gain "
+                        + m.getExperienceValue() + "XP and " + m.getRndCashLoot() + " bucks!" + "\n");
+                if (p.getExperience() >= ((p.getLevel() * (p.getLevel() - 1)) * 50))
+                {
+                    String[] stats = {"Strength", "Dexterity", "Constitution"};
+                    int s = p.getStrength();
+                    int d = p.getDexterity();
+                    int c = p.getConstitution();
+                    int l = p.getLevel();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("You Leveled Up! Choose a skill to allocate your point!");
+                    builder.setItems(stats, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case 0:
+                                    p.setStrength(s+1);
+                                    p.setLevel(l+1);
+                                    backToHub(p);
+                                case 1:
+                                    p.setDexterity(d+1);
+                                    p.setLevel(l+1);
+                                    backToHub(p);
+                                case 2:
+                                    p.setConstitution(c+1);
+                                    p.setLevel(l+1);
+                                    backToHub(p);
+                            }
+                        }
+                    });
+
+                    // create and show the alert dialog
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+                else {
+                    String[] stats = {"Back to Hub"};
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("Enemy Vanquished!");
+                    builder.setItems(stats, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case 0:
+                                    backToHub(p);
+                            }
+                        }
+                    });
+
+                    // create and show the alert dialog
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            }
+            else
+            {
+                int monHP = m.getHealth();
+                m.setHealth(monHP -= Math.round((userDmg - (m.getDefense()) * 1.0)));
+                String aar = p.getName() + " hit " + m.getName() + " for " + userDmg + " DMG!" + "\n";
+                log.append(aar);
+                int hp = p.getHealth();
+                p.setHealth(hp -= Math.round((monDmg - (p.getDefense() * 1.0))));
+                aar = m.getName() + " hit " + p.getName() + " for " + monDmg + " DMG!" + "\n";
+                log.append(aar);
+                monDmg = m.getAttPower();
+                userDmg = p.getAttPower();
+                refreshUI(p, m);
+            }
         }
 
 
     }
 
     public void backToHub(Player p) {
+        p.Calculate_SubStats();
+        p.calcHealth();
         Intent intent = new Intent(this, HubActivity.class);
         intent.putExtra("thePlayer", p);
         startActivity(intent);

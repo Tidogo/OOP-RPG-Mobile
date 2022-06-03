@@ -115,22 +115,25 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
 
     private void useItem(Player p) {
         Spinner spinItem = (Spinner) findViewById(R.id.spinConsumables);
-        String iName = spinItem.getSelectedItem().toString();
-        Consumable tempCon = null;
-        for (Item i : p.Inventory) {
-            if (iName.equals(i.getName())) {
-                tempCon = (Consumable) i;
-                p.setHealth(p.getHealth() + tempCon.getHealthBoost());
-                p.setGearInitiativeMod(p.getGearInitiativeMod() + tempCon.getTempInitBoost());
-                p.setGearDodgeTotal(p.getGearDodgeTotal() + tempCon.getTempDodgeBoost());
-                p.setGearCritMod(p.getGearCritMod() + tempCon.getTempCritBoost());
-                p.setGearAttPowerMod(p.getGearAttPowerMod() + tempCon.getTempAttackBoost());
-                p.setGearDefenseTotal(p.getGearDefenseTotal() + tempCon.getTempDefenseBoost());
-                p.Inventory.remove(i);
-                break;
+        if (spinItem.getSelectedItem() != null) {
+            String iName = spinItem.getSelectedItem().toString();
+            Consumable tempCon = null;
+            for (Item i : p.Inventory) {
+                if (iName.equals(i.getName())) {
+                    tempCon = (Consumable) i;
+                    p.setHealth(p.getHealth() + tempCon.getHealthBoost());
+                    p.setGearInitiativeMod(p.getGearInitiativeMod() + tempCon.getTempInitBoost());
+                    p.setGearDodgeTotal(p.getGearDodgeTotal() + tempCon.getTempDodgeBoost());
+                    p.setGearCritMod(p.getGearCritMod() + tempCon.getTempCritBoost());
+                    p.setGearAttPowerMod(p.getGearAttPowerMod() + tempCon.getTempAttackBoost());
+                    p.setGearDefenseTotal(p.getGearDefenseTotal() + tempCon.getTempDefenseBoost());
+                    p.Inventory.remove(i);
+                    break;
+                }
             }
+            refreshInvConsumables(p);
         }
-        refreshInvConsumables(p);
+
     }
 
     private void flee(Player thePlayer, Monster theMon, EditText etLog) {

@@ -15,7 +15,7 @@ public class Monster extends Entity implements Serializable
 		Dexterity = dex;
 		AttPower = ap;
 		setInitiative(init);
-		setRndCashLoot(lvl + (10 * diff));
+		setRndCashLoot(lvl + (15 * diff));
 		setExperienceValue(lvl * 10);
 		setLootSeedValue(lvl * 10);
 		Calculate_SubStats();

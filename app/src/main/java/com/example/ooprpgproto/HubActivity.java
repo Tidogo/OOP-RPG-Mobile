@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Xml;
@@ -35,6 +36,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,12 +55,14 @@ public class HubActivity extends AppCompatActivity implements Serializable {
 
     ArrayList<Monster> mons = new ArrayList<Monster>();
     static Random rnd = new Random();
+    Player p = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hub);
-        Player thePlayer = (Player) getIntent().getSerializableExtra("thePlayer");
-        refreshUI(thePlayer);
+        p = (Player) getIntent().getSerializableExtra("thePlayer");
+        //SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+        refreshUI(p);
         String file = "Monster.xml";
         try {
             InputStream in1 = this.getAssets().open(file);
@@ -109,19 +113,19 @@ public class HubActivity extends AppCompatActivity implements Serializable {
         battleBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                battle(thePlayer);
+                battle(p);
             }
         });
         shopBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                shop(thePlayer);
+                shop(p);
             }
         });
         invBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                inventory(thePlayer);
+                inventory(p);
             }
         });
 
@@ -132,41 +136,93 @@ public class HubActivity extends AppCompatActivity implements Serializable {
         intent.putExtra("thePlayer", thePlayer);
         startActivity(intent);
     }
+    @Override
+    public void onPause() {
 
-    public void shop(Player thePlayer) {
-        Intent intent = new Intent(this, ShopActivity.class);
-        intent.putExtra("thePlayer", thePlayer);
-        startActivity(intent);
-    }
-    public void refreshUI(Player p) {
-        TextView txtName = (TextView) findViewById(R.id.txtName);
-        txtName.setText("Name: "+p.getName());
-        TextView txtHP = (TextView) findViewById(R.id.txtHP);
-        txtHP.setText("Health: " + String.valueOf(p.getHealth()));
-        TextView txtExp = (TextView) findViewById(R.id.txtExp);
-        txtExp.setText("Experience" + String.valueOf(p.getExperience()));
-    }
+        super.onPause();
+        if (p != null) {
+            try {
+                FileOutputStream fos;
+                fos = openFileOutput("player", Context.MODE_PRIVATE);
 
-    private static String getValue(String tag, Element element) {
-        NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
-        Node node = nodeList.item(0);
-        return node.getNodeValue();
-    }
+                XmlSerializer serializer = Xml.newSerializer();
+                serializer.setOutput(fos, "UTF-8");
+                serializer.startDocument(null, Boolean.valueOf(true));
+                serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
 
-    public void battle(Player p) {
-        final Spinner spinDiff = (Spinner) findViewById(R.id.spinDiff);
-        int selectDiff = spinDiff.getSelectedItemPosition()+1;
-        ArrayList<Monster> monJumble = new ArrayList<Monster>();
-        for (Monster m : mons) {
-            if (m.getDifficulty() == selectDiff) {
-                monJumble.add(m);
+                serializer.startTag(null, "player");
+                serializer.startTag(null, "name");
+                serializer.text(p.getName());
+                serializer.endTag(null, "name");
+                serializer.startTag(null, "strength");
+                serializer.text(String.valueOf(p.getStrength()));
+                serializer.endTag(null, "strength");
+                serializer.startTag(null, "constitution");
+                serializer.text(String.valueOf(p.getConstitution()));
+                serializer.endTag(null, "constitution");
+                serializer.startTag(null, "dexterity");
+                serializer.text(String.valueOf(p.getDexterity()));
+                serializer.endTag(null, "dexterity");
+                serializer.startTag(null, "level");
+                serializer.text(String.valueOf(p.getLevel()));
+                serializer.endTag(null, "level");
+                serializer.startTag(null, "cash");
+                serializer.text(String.valueOf(p.getCash()));
+                serializer.endTag(null, "cash");
+                serializer.startTag(null, "experience");
+                serializer.text(String.valueOf(p.getExperience()));
+                serializer.endTag(null, "experience");
+                serializer.endTag(null, "player");
+
+                serializer.endDocument();
+                serializer.flush();
+
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
+
         }
-        int r = rnd.nextInt(monJumble.size());
-        Monster mon = monJumble.get(r);
-        Intent intent = new Intent(this, BattleActivity.class);
-        intent.putExtra("thePlayer", p);
-        intent.putExtra("theMon", mon);
-        startActivity(intent);
+        finish();
+
     }
-}
+        public void shop (Player thePlayer){
+            Intent intent = new Intent(this, ShopActivity.class);
+            intent.putExtra("thePlayer", thePlayer);
+            startActivity(intent);
+        }
+        public void refreshUI (Player p){
+            TextView txtName = (TextView) findViewById(R.id.txtName);
+            txtName.setText("Name: " + p.getName());
+            TextView txtHP = (TextView) findViewById(R.id.txtHP);
+            txtHP.setText("Health: " + String.valueOf(p.getHealth()));
+            TextView txtExp = (TextView) findViewById(R.id.txtExp);
+            txtExp.setText("Experience: " + String.valueOf(p.getExperience()));
+        }
+
+        private static String getValue (String tag, Element element){
+            NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
+            Node node = nodeList.item(0);
+            return node.getNodeValue();
+        }
+
+        public void battle (Player p){
+            final Spinner spinDiff = (Spinner) findViewById(R.id.spinDiff);
+            int selectDiff = spinDiff.getSelectedItemPosition() + 1;
+            ArrayList<Monster> monJumble = new ArrayList<Monster>();
+            for (Monster m : mons) {
+                if (m.getDifficulty() == selectDiff) {
+                    monJumble.add(m);
+                }
+            }
+            int r = rnd.nextInt(monJumble.size());
+            Monster mon = monJumble.get(r);
+            Intent intent = new Intent(this, BattleActivity.class);
+            intent.putExtra("thePlayer", p);
+            intent.putExtra("theMon", mon);
+            startActivity(intent);
+        }
+    }

@@ -173,7 +173,7 @@ public class NewGameActivity extends AppCompatActivity implements Serializable {
         fos.close();
         AlertDialog alertDialog = new AlertDialog.Builder(NewGameActivity.this).create();
         alertDialog.setTitle("Welcome!");
-        alertDialog.setMessage("Your character is now created and ready to adventure!" + newPlayer.getName());
+        alertDialog.setMessage("Your character is now created and ready to adventure!");
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

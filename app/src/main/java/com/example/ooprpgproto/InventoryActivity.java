@@ -4,8 +4,11 @@ import static com.example.ooprpgproto.MainActivity.getValue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Xml;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,12 +17,17 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlSerializer;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -35,12 +43,24 @@ public class InventoryActivity extends AppCompatActivity implements Serializable
     private ArrayList<String> playerInvenNames = new ArrayList<>();
     private ArrayList<Armor> armor = new ArrayList<Armor>();
     private ArrayList<Weapon> weapon = new ArrayList<Weapon>();
+
+    Player p = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
-        Player thePlayer = (Player) getIntent().getSerializableExtra("thePlayer");
-        refreshUI(thePlayer);
+        p = (Player) getIntent().getSerializableExtra("thePlayer");
+        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+        refreshUI(p);
+        /*SharedPreferences.Editor prefsEditor = mPrefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(p);
+        prefsEditor.putString("MyObject", json);
+        prefsEditor.commit();*/
+        /*ArrayList<Item> inv = new ArrayList<Item>();
+        Gson gson2 = new Gson();
+        String json2 = mPrefs.getString("MyObject", "");
+        inv = gson2.fromJson(json2, Item.class);*/
         String file1 = "Armor.xml";
         String file3 = "Weapon.xml";
         try {
@@ -108,23 +128,24 @@ public class InventoryActivity extends AppCompatActivity implements Serializable
         equipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                equip(thePlayer);
+                equip(p);
             }
         });
         Button leaveButton = (Button) findViewById(R.id.btnBackToMenu);
         leaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                leave(thePlayer);
+                leave(p);
             }
         });
         Button unequipButton = (Button) findViewById(R.id.btnUnequipAll);
         unequipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                unequipAll(thePlayer);
+                unequipAll(p);
             }
         });
+
     }
 
     public void refreshInventory(Player p) {
@@ -149,79 +170,82 @@ public class InventoryActivity extends AppCompatActivity implements Serializable
         equipped = p.getEquippedGear();
     }
     public void equip(Player p) {
-        TextView headgear = (TextView) findViewById(R.id.textView2);
-        TextView chestgear = (TextView) findViewById(R.id.textView4);
-        TextView weapongear = (TextView) findViewById(R.id.textView5);
-        TextView leggear = (TextView) findViewById(R.id.textView7);
-        Spinner spinInventory = (Spinner) findViewById(R.id.spinInventory);
-        String iName = spinInventory.getSelectedItem().toString();
-        Weapon wep = null;
-        Armor armr = null;
-        int woa = 0;
-        for (Item i : p.Inventory) {
-            if (i.getName() == iName) {
-                woa = wepOrArmor(i);
-                if (woa == 1) {
-                    wep = (Weapon) i;
-                    for (Item i2 : p.EquippedGear) {
-                        if (wepOrArmor(i2) == 1) {
-                            p.EquippedGear.remove(i2);
-                            p.Inventory.add(i2);
+        if (!p.Inventory.isEmpty()) {
+            TextView headgear = (TextView) findViewById(R.id.txtHeadGear);
+            TextView chestgear = (TextView) findViewById(R.id.txtChest);
+            TextView weapongear = (TextView) findViewById(R.id.txtLHandGear);
+            TextView leggear = (TextView) findViewById(R.id.textView6);
+            Spinner spinInventory = (Spinner) findViewById(R.id.spinInventory);
+            String iName = spinInventory.getSelectedItem().toString();
+            Weapon wep = null;
+            Armor armr = null;
+            int woa = 0;
+            for (Item i : p.Inventory) {
+                if (i.getName() == iName) {
+                    woa = wepOrArmor(i);
+                    if (woa == 1) {
+                        wep = (Weapon) i;
+                        for (Item i2 : p.EquippedGear) {
+                            if (wepOrArmor(i2) == 1) {
+                                p.EquippedGear.remove(i2);
+                                p.Inventory.add(i2);
+                            }
                         }
+                        p.EquippedGear.add(wep);
+                        p.Inventory.remove(i);
+                        playerInvenNames.remove(i.getName());
+                        weapongear.setText(wep.getName());
+                        break;
                     }
-                    p.EquippedGear.add(wep);
-                    p.Inventory.remove(i);
-                    playerInvenNames.remove(i.getName());
-                    weapongear.setText(wep.getName());
+                    else if (woa == 2) {
+                        armr = (Armor) i;
+                        if (armr.getSlot() == 1) {
+                            for (Item i2 : p.EquippedGear) {
+                                if (wepOrArmor(i2) == 2) {
+                                    Armor tempArmor = (Armor) i2;
+                                    if (tempArmor.getSlot() == 1) {
+                                        p.EquippedGear.remove(i2);
+                                        p.Inventory.add(i2);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        if (armr.getSlot() == 2) {
+                            for (Item i2 : p.EquippedGear) {
+                                if (wepOrArmor(i2) == 2) {
+                                    Armor tempArmor = (Armor) i2;
+                                    if (tempArmor.getSlot() == 2) {
+                                        p.EquippedGear.remove(i2);
+                                        p.Inventory.add(i2);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        if (armr.getSlot() == 3) {
+                            for (Item i2 : p.EquippedGear) {
+                                if (wepOrArmor(i2) == 2) {
+                                    Armor tempArmor = (Armor) i2;
+                                    if (tempArmor.getSlot() == 3) {
+                                        p.EquippedGear.remove(i2);
+                                        p.Inventory.add(i2);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        p.EquippedGear.add(armr);
+                        p.Inventory.remove(i);
+                        playerInvenNames.remove(i.getName());
+                        break;
+                    }
                     break;
                 }
-                else if (woa == 2) {
-                    armr = (Armor) i;
-                    if (armr.getSlot() == 1) {
-                        for (Item i2 : p.EquippedGear) {
-                            if (wepOrArmor(i2) == 2) {
-                                Armor tempArmor = (Armor) i2;
-                                if (tempArmor.getSlot() == 1) {
-                                    p.EquippedGear.remove(i2);
-                                    p.Inventory.add(i2);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    if (armr.getSlot() == 2) {
-                        for (Item i2 : p.EquippedGear) {
-                            if (wepOrArmor(i2) == 2) {
-                                Armor tempArmor = (Armor) i2;
-                                if (tempArmor.getSlot() == 2) {
-                                    p.EquippedGear.remove(i2);
-                                    p.Inventory.add(i2);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    if (armr.getSlot() == 3) {
-                        for (Item i2 : p.EquippedGear) {
-                            if (wepOrArmor(i2) == 2) {
-                                Armor tempArmor = (Armor) i2;
-                                if (tempArmor.getSlot() == 3) {
-                                    p.EquippedGear.remove(i2);
-                                    p.Inventory.add(i2);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    p.EquippedGear.add(armr);
-                    p.Inventory.remove(i);
-                    playerInvenNames.remove(i.getName());
-                    break;
-                }
-                break;
             }
+            refreshUI(p);
         }
-        refreshUI(p);
+
     }
     public int wepOrArmor(Item i) {
         int result = 0;
@@ -236,28 +260,28 @@ public class InventoryActivity extends AppCompatActivity implements Serializable
         return result;
     }
     public void refreshUI(Player p) {
-        TextView headgear = (TextView) findViewById(R.id.textView2);
-        TextView chestgear = (TextView) findViewById(R.id.textView4);
-        TextView weapongear = (TextView) findViewById(R.id.textView5);
-        TextView leggear = (TextView) findViewById(R.id.textView7);
-        leggear.setText("");
-        headgear.setText("");
-        weapongear.setText("");
-        chestgear.setText("");
+        TextView headgear = (TextView) findViewById(R.id.txtHeadGear);
+        TextView chestgear = (TextView) findViewById(R.id.txtChest);
+        TextView weapongear = (TextView) findViewById(R.id.txtLHandGear);
+        TextView leggear = (TextView) findViewById(R.id.textView6);
+        leggear.setText("Legs: ");
+        headgear.setText("Helmet: ");
+        weapongear.setText("Weapon: ");
+        chestgear.setText("Body: ");
 
         for (Item i : p.EquippedGear) {
             if (wepOrArmor(i) == 1) {
-                weapongear.setText(i.getName());
+                weapongear.setText("Weapon: " + i.getName());
             }
             else {
                 if (((Armor) i).getSlot() == 1) {
-                    headgear.setText(i.getName());
+                    headgear.setText("Helmet: " + i.getName());
                 }
                 else if (((Armor) i).getSlot() == 2) {
-                    chestgear.setText(i.getName());
+                    chestgear.setText("Body: " + i.getName());
                 }
                 else {
-                    leggear.setText(i.getName());
+                    leggear.setText("Legs: " + i.getName());
                 }
             }
         }
@@ -269,6 +293,59 @@ public class InventoryActivity extends AppCompatActivity implements Serializable
         }
         p.EquippedGear.clear();
         refreshUI(p);
+    }
+    @Override
+    public void onPause() {
+
+        super.onPause();
+        if (p != null) {
+            try {
+                FileOutputStream fos;
+                fos = openFileOutput("player", Context.MODE_PRIVATE);
+
+                XmlSerializer serializer = Xml.newSerializer();
+                serializer.setOutput(fos, "UTF-8");
+                serializer.startDocument(null, Boolean.valueOf(true));
+                serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
+
+                serializer.startTag(null, "player");
+                serializer.startTag(null, "name");
+                serializer.text(p.getName());
+                serializer.endTag(null, "name");
+                serializer.startTag(null, "strength");
+                serializer.text(String.valueOf(p.getStrength()));
+                serializer.endTag(null, "strength");
+                serializer.startTag(null, "constitution");
+                serializer.text(String.valueOf(p.getConstitution()));
+                serializer.endTag(null, "constitution");
+                serializer.startTag(null, "dexterity");
+                serializer.text(String.valueOf(p.getDexterity()));
+                serializer.endTag(null, "dexterity");
+                serializer.startTag(null, "level");
+                serializer.text(String.valueOf(p.getLevel()));
+                serializer.endTag(null, "level");
+                serializer.startTag(null, "cash");
+                serializer.text(String.valueOf(p.getCash()));
+                serializer.endTag(null, "cash");
+                serializer.startTag(null, "experience");
+                serializer.text(String.valueOf(p.getExperience()));
+                serializer.endTag(null, "experience");
+                serializer.endTag(null, "player");
+
+                serializer.endDocument();
+                serializer.flush();
+
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+        finish();
+
     }
 
 }

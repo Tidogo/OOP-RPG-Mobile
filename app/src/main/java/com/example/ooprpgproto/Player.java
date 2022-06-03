@@ -28,7 +28,7 @@ public class Player extends Entity implements Serializable {
 		Constitution = con;
 		Dexterity = dex;
 		setExperience(0);
-		setCash(9999); //For Testing Purposes
+		setCash(50);
 		ArrayList<Item> inven = new ArrayList<Item>();
 		setInventory(inven);
 		ArrayList<Item> equipped = new ArrayList<Item>();
@@ -208,6 +208,24 @@ public class Player extends Entity implements Serializable {
 		{
 
 		}
+	}
+	public void refundGear() {
+		for (Item i : EquippedGear) {
+			Cash += i.getValue();
+		}
+		for (Item i2 : Inventory) {
+			Cash += i2.getValue();
+		}
+	}
+	public ArrayList<Item> returnItems() {
+		ArrayList<Item> result = new ArrayList<Item>();
+		for (Item i : EquippedGear) {
+			result.add(i);
+		}
+		for (Item i2 : Inventory) {
+			result.add(i2);
+		}
+		return result;
 	}
 	public void calcHealth() {
 		Health = 100 + (10 * Constitution) + 5;

@@ -4,11 +4,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ooprpg2icon2"
-        android:label="@string/app_name"
-        android:roundIcon="@drawable/ooprpg2icon2"
+        android:icon="@drawable/ooprpgmobile"
+        android:label="OOP RPG Mobile"
+        android:roundIcon="@drawable/ooprpgmobile"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Ooprpgproto">
+        android:theme="@style/Theme.Material3.DynamicColors.Light">
         <activity
             android:name=".InventoryActivity"
             android:exported="false" />

@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 public abstract class Item implements Serializable
 {
+	public Item() {
+
+	}
 
 	public String Name;
 	public final String getName()

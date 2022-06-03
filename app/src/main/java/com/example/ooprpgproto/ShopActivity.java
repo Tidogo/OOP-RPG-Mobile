@@ -3,9 +3,11 @@ package com.example.ooprpgproto;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Xml;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +21,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlSerializer;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -36,12 +41,13 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
     ArrayList<Weapon> weapon = new ArrayList<Weapon>();
     ArrayList<String> itemNames = new ArrayList<String>();
     ArrayList<String> playerInventory = new ArrayList<String>();
+    Player p = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
-        Player thePlayer = (Player) getIntent().getSerializableExtra("thePlayer");
-        refreshUI(thePlayer);
+        Player p = (Player) getIntent().getSerializableExtra("thePlayer");
+        refreshUI(p);
         String file1 = "Armor.xml";
         String file2 = "Consumable.xml";
         String file3 = "Weapon.xml";
@@ -156,7 +162,7 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         diffShop.setAdapter(arrayAdapter);
         Spinner diffInventory = (Spinner) findViewById(R.id.spinInven);
-        for (Item i : thePlayer.Inventory) {
+        for (Item i : p.Inventory) {
             playerInventory.add(i.getName());
         }
         ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, playerInventory);
@@ -213,19 +219,19 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
         buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buy(thePlayer, diffShop, diffInventory);
+                buy(p, diffShop, diffInventory);
             }
         });
         leaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                leave(thePlayer);
+                leave(p);
             }
         });
         sellBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sell(thePlayer, diffShop, diffInventory);
+                sell(p, diffShop, diffInventory);
             }
         });
 
@@ -245,6 +251,59 @@ public class ShopActivity extends AppCompatActivity implements Serializable {
         Intent intent = new Intent(this, HubActivity.class);
         intent.putExtra("thePlayer", p);
         startActivity(intent);
+    }
+    @Override
+    public void onPause() {
+
+        super.onPause();
+        if (p != null) {
+            try {
+                FileOutputStream fos;
+                fos = openFileOutput("player", Context.MODE_PRIVATE);
+
+                XmlSerializer serializer = Xml.newSerializer();
+                serializer.setOutput(fos, "UTF-8");
+                serializer.startDocument(null, Boolean.valueOf(true));
+                serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
+
+                serializer.startTag(null, "player");
+                serializer.startTag(null, "name");
+                serializer.text(p.getName());
+                serializer.endTag(null, "name");
+                serializer.startTag(null, "strength");
+                serializer.text(String.valueOf(p.getStrength()));
+                serializer.endTag(null, "strength");
+                serializer.startTag(null, "constitution");
+                serializer.text(String.valueOf(p.getConstitution()));
+                serializer.endTag(null, "constitution");
+                serializer.startTag(null, "dexterity");
+                serializer.text(String.valueOf(p.getDexterity()));
+                serializer.endTag(null, "dexterity");
+                serializer.startTag(null, "level");
+                serializer.text(String.valueOf(p.getLevel()));
+                serializer.endTag(null, "level");
+                serializer.startTag(null, "cash");
+                serializer.text(String.valueOf(p.getCash()));
+                serializer.endTag(null, "cash");
+                serializer.startTag(null, "experience");
+                serializer.text(String.valueOf(p.getExperience()));
+                serializer.endTag(null, "experience");
+                serializer.endTag(null, "player");
+
+                serializer.endDocument();
+                serializer.flush();
+
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+        finish();
+
     }
     public void buy(Player p, Spinner shop, Spinner inventory){
         String selectedItem = shop.getSelectedItem().toString();

@@ -7,13 +7,11 @@
     tools:context=".InventoryActivity">
 
     <TableLayout
-        android:layout_width="304dp"
-        android:layout_height="175dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
@@ -26,12 +24,6 @@
                 android:layout_height="wrap_content"
                 android:text="Head Gear:"
                 android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
 
         </TableRow>
 
@@ -46,12 +38,6 @@
                 android:text="Chest Gear:"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
         </TableRow>
 
         <TableRow
@@ -64,12 +50,6 @@
                 android:layout_height="wrap_content"
                 android:text="Weapon:"
                 android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
 
         </TableRow>
 
@@ -84,27 +64,11 @@
                 android:text="Leg Gear:"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
         </TableRow>
-    </TableLayout>
-
-    <TableLayout
-        android:id="@+id/tableLayout5"
-        android:layout_width="409dp"
-        android:layout_height="484dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
         <TableRow
-            android:layout_width="355dp"
-            android:layout_height="60dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <Spinner
                 android:id="@+id/spinInventory"
@@ -121,29 +85,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Equip" />
-
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <Button
-                android:id="@+id/btnUnequipAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Unequip All" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btnBackToMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Leave" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnUnequipAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unequip All" />
         </TableRow>
     </TableLayout>
 

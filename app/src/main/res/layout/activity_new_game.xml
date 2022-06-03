@@ -8,60 +8,21 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="244dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="86dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="86dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="What is Your Character?"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="76dp"
-        android:onClick="btnReset"
-        android:text="Reset Points"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCon"
-        app:layout_constraintVertical_bias="1.0"
-        tools:text="btnReset" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="160dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="107dp"
-        android:layout_marginEnd="126dp"
-        android:layout_marginBottom="25dp"
-        android:backgroundTint="#a29cf4"
-        android:onClick="createChar"
-        android:text="Create Character"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="btnCreateChar" />
-
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="343dp"
-        android:layout_height="209dp"
-        android:layout_marginTop="166dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="67dp"
-        app:layout_constraintBottom_toTopOf="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -78,6 +39,7 @@
                 android:inputType="textPersonName"
                 android:text="Your Name"
                 tools:text="txtName" />
+
         </TableRow>
 
         <TableRow
@@ -94,7 +56,7 @@
 
             <Button
                 android:id="@+id/addStr"
-                android:layout_width="wrap_content"
+                android:layout_width="81dp"
                 android:layout_height="wrap_content"
                 android:onClick="addStr"
                 android:text="+"
@@ -120,12 +82,11 @@
                 android:onClick="addDex"
                 android:text="+"
                 tools:text="btnAddCon" />
-
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/txtCon"
@@ -142,7 +103,32 @@
                 android:onClick="addCon"
                 android:text="+"
                 tools:text="btnAddDex" />
+        </TableRow>
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="btnReset"
+                android:text="Reset Points"
+                tools:text="btnReset" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="createChar"
+                android:text="Create Character"
+                tools:text="btnCreateChar" />
         </TableRow>
 
     </TableLayout>

@@ -5,9 +5,11 @@ import static com.example.ooprpgproto.MainActivity.getValue;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Xml;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,7 +22,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlSerializer;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -36,16 +41,17 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
     static Random rnd = new Random();
     ArrayList<Consumable> consumable = new ArrayList<Consumable>();
     private ArrayList<String> playerInvenNames = new ArrayList<>();
+    Player p = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
-        Player thePlayer = (Player) getIntent().getSerializableExtra("thePlayer");
+        p = (Player) getIntent().getSerializableExtra("thePlayer");
         Monster theMon = (Monster) getIntent().getSerializableExtra("theMon");
         EditText etLog = (EditText) findViewById(R.id.textMultiLog);
-        thePlayer.Calculate_Equip_Bonus();
-        refreshUI(thePlayer, theMon);
-        refreshInvConsumables(thePlayer);
+        p.Calculate_Equip_Bonus();
+        refreshUI(p, theMon);
+        refreshInvConsumables(p);
         etLog.setEnabled(false);
         String file2 = "Consumable.xml";
         try {
@@ -87,21 +93,21 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
         attBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                attack(thePlayer, theMon, etLog);
+                attack(p, theMon, etLog);
             }
         });
         Button fleeBtn = (Button) findViewById(R.id.btnFlee);
         fleeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flee(thePlayer, theMon, etLog);
+                flee(p, theMon, etLog);
             }
         });
         Button useItemBtn = (Button) findViewById(R.id.button4);
         useItemBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                useItem(thePlayer);
+                useItem(p);
             }
         });
 
@@ -148,9 +154,9 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
 
     public void refreshUI(Player p, Monster m) {
         TextView txtPHP = (TextView) findViewById(R.id.txtPlayerHP);
-        txtPHP.setText("Player HP: "+ p.getHealth());
+        txtPHP.setText(p.getName() + " HP: " + p.getHealth());
         TextView txtMHP = (TextView) findViewById(R.id.txtMonHP);
-        txtMHP.setText("Monster HP: " + String.valueOf(m.getHealth()));
+        txtMHP.setText(m.getName() + " HP: " + String.valueOf(m.getHealth()));
     }
     public void refreshUI(Player p) {
         TextView txtPHP = (TextView) findViewById(R.id.txtPlayerHP);
@@ -460,5 +466,58 @@ public class BattleActivity extends AppCompatActivity implements Serializable {
         Intent intent = new Intent(this, HubActivity.class);
         intent.putExtra("thePlayer", p);
         startActivity(intent);
+    }
+    @Override
+    public void onPause() {
+
+        super.onPause();
+        if (p != null) {
+            try {
+                FileOutputStream fos;
+                fos = openFileOutput("player", Context.MODE_PRIVATE);
+
+                XmlSerializer serializer = Xml.newSerializer();
+                serializer.setOutput(fos, "UTF-8");
+                serializer.startDocument(null, Boolean.valueOf(true));
+                serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
+
+                serializer.startTag(null, "player");
+                serializer.startTag(null, "name");
+                serializer.text(p.getName());
+                serializer.endTag(null, "name");
+                serializer.startTag(null, "strength");
+                serializer.text(String.valueOf(p.getStrength()));
+                serializer.endTag(null, "strength");
+                serializer.startTag(null, "constitution");
+                serializer.text(String.valueOf(p.getConstitution()));
+                serializer.endTag(null, "constitution");
+                serializer.startTag(null, "dexterity");
+                serializer.text(String.valueOf(p.getDexterity()));
+                serializer.endTag(null, "dexterity");
+                serializer.startTag(null, "level");
+                serializer.text(String.valueOf(p.getLevel()));
+                serializer.endTag(null, "level");
+                serializer.startTag(null, "cash");
+                serializer.text(String.valueOf(p.getCash()));
+                serializer.endTag(null, "cash");
+                serializer.startTag(null, "experience");
+                serializer.text(String.valueOf(p.getExperience()));
+                serializer.endTag(null, "experience");
+                serializer.endTag(null, "player");
+
+                serializer.endDocument();
+                serializer.flush();
+
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+        finish();
+
     }
 }
